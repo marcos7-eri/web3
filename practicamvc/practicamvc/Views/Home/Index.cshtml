@@ -1,0 +1,358 @@
+﻿@{
+    ViewData["Title"] = "Inicio";
+}
+
+<style>
+    .hero-section {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 4rem 0;
+        margin-bottom: 3rem;
+        position: relative;
+        overflow: hidden;
+    }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.05"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+    .hero-content {
+        position: relative;
+        z-index: 1;
+    }
+
+    .feature-card {
+        transition: all 0.3s ease;
+        border: none;
+        border-radius: 15px;
+        background: white;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        overflow: hidden;
+    }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+    .card-icon {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1rem;
+        font-size: 2rem;
+        color: white;
+        position: relative;
+        overflow: hidden;
+    }
+
+        .card-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: inherit;
+            opacity: 0.1;
+            border-radius: 50%;
+        }
+
+    .productos-icon {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+    }
+
+    .clientes-icon {
+        background: linear-gradient(135deg, #f093fb, #f5576c);
+    }
+
+    .pedidos-icon {
+        background: linear-gradient(135deg, #4facfe, #00f2fe);
+    }
+
+    .detalles-icon {
+        background: linear-gradient(135deg, #43e97b, #38f9d7);
+    }
+
+    .custom-btn {
+        border: none;
+        padding: 12px 30px;
+        border-radius: 25px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+        .custom-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: all 0.5s;
+        }
+
+        .custom-btn:hover::before {
+            left: 100%;
+        }
+
+    .btn-productos {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+    }
+
+    .btn-clientes {
+        background: linear-gradient(135deg, #f093fb, #f5576c);
+        color: white;
+    }
+
+    .btn-pedidos {
+        background: linear-gradient(135deg, #4facfe, #00f2fe);
+        color: white;
+    }
+
+    .btn-detalles {
+        background: linear-gradient(135deg, #43e97b, #38f9d7);
+        color: white;
+    }
+
+    .stats-section {
+        background: #f8f9fa;
+        padding: 3rem 0;
+        margin: 3rem 0;
+        border-radius: 20px;
+    }
+
+    .stat-item {
+        text-align: center;
+        padding: 1rem;
+    }
+
+    .stat-number {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #667eea;
+    }
+
+    .notification-banner {
+        background: linear-gradient(135deg, #ffecd2, #fcb69f);
+        border-radius: 10px;
+        padding: 1rem 1.5rem;
+        margin-bottom: 2rem;
+        border-left: 5px solid #ff6b6b;
+    }
+
+    .floating-elements {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        pointer-events: none;
+        overflow: hidden;
+    }
+
+    .floating-shape {
+        position: absolute;
+        opacity: 0.1;
+        animation: float 6s ease-in-out infinite;
+    }
+
+        .floating-shape:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-shape:nth-child(2) {
+            top: 60%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .floating-shape:nth-child(3) {
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+</style>
+
+<section class="hero-section">
+    <div class="floating-elements">
+        <div class="floating-shape">
+            <i class="bi bi-palette" style="font-size: 3rem;"></i>
+        </div>
+        <div class="floating-shape">
+            <i class="bi bi-brush" style="font-size: 2.5rem;"></i>
+        </div>
+        <div class="floating-shape">
+            <i class="bi bi-scissors" style="font-size: 2rem;"></i>
+        </div>
+    </div>
+    <div class="container">
+        <div class="hero-content text-center">
+            <h1 class="display-3 fw-bold mb-3">
+                <i class="bi bi-gem me-3"></i>
+                Sistema de Artesanías
+            </h1>
+            <p class="lead fs-4 mb-4">Gestiona tu negocio artesanal de forma profesional y eficiente</p>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <p class="fs-5 opacity-90">Controla inventario, clientes, pedidos y más desde una plataforma integrada</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container">
+    <div class="notification-banner">
+        <div class="d-flex align-items-center">
+            <i class="bi bi-info-circle-fill me-3 fs-4 text-danger"></i>
+            <div>
+                <strong>Nota Importante:</strong> En Pedidos, detalles de pedidos y productos cambiar con el punto (.) para decimales.
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4 mb-5">
+        <div class="col-md-6 col-lg-3">
+            <div class="feature-card h-100">
+                <div class="card-body text-center p-4">
+                    <div class="card-icon productos-icon">
+                        <i class="bi bi-box-seam"></i>
+                    </div>
+                    <h5 class="card-title fw-bold mb-3">Productos</h5>
+                    <p class="card-text text-muted mb-4">Administra tu catálogo completo de productos artesanales con categorías y precios.</p>
+                    <a asp-controller="Productos" asp-action="Index" class="custom-btn btn-productos text-decoration-none">
+                        <i class="bi bi-arrow-right me-2"></i>Gestionar Productos
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div class="feature-card h-100">
+                <div class="card-body text-center p-4">
+                    <div class="card-icon clientes-icon">
+                        <i class="bi bi-people"></i>
+                    </div>
+                    <h5 class="card-title fw-bold mb-3">Clientes</h5>
+                    <p class="card-text text-muted mb-4">Mantén un registro detallado de todos tus clientes y su historial de compras.</p>
+                    <a asp-controller="Clientes" asp-action="Index" class="custom-btn btn-clientes text-decoration-none">
+                        <i class="bi bi-arrow-right me-2"></i>Ver Clientes
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div class="feature-card h-100">
+                <div class="card-body text-center p-4">
+                    <div class="card-icon pedidos-icon">
+                        <i class="bi bi-cart-check"></i>
+                    </div>
+                    <h5 class="card-title fw-bold mb-3">Pedidos</h5>
+                    <p class="card-text text-muted mb-4">Controla y da seguimiento a todos los pedidos desde su creación hasta entrega.</p>
+                    <a asp-controller="Pedidos" asp-action="Index" class="custom-btn btn-pedidos text-decoration-none">
+                        <i class="bi bi-arrow-right me-2"></i>Administrar Pedidos
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div class="feature-card h-100">
+                <div class="card-body text-center p-4">
+                    <div class="card-icon detalles-icon">
+                        <i class="bi bi-list-check"></i>
+                    </div>
+                    <h5 class="card-title fw-bold mb-3">Detalles de Pedido</h5>
+                    <p class="card-text text-muted mb-4">Visualiza y edita los artículos específicos incluidos en cada pedido.</p>
+                    <a asp-controller="DetallesPedido" asp-action="Index" class="custom-btn btn-detalles text-decoration-none">
+                        <i class="bi bi-arrow-right me-2"></i>Ver Detalles
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="stats-section">
+        <div class="container">
+            <div class="text-center mb-4">
+                <h3 class="fw-bold text-dark">Panel de Control Rápido</h3>
+                <p class="text-muted">Accesos directos a las funciones más utilizadas</p>
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <div class="stat-number">
+                            <i class="bi bi-plus-circle"></i>
+                        </div>
+                        <h6 class="fw-bold">Nuevo Producto</h6>
+                        <a asp-controller="Productos" asp-action="Create" class="btn btn-sm btn-outline-primary">Crear</a>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <div class="stat-number">
+                            <i class="bi bi-person-plus"></i>
+                        </div>
+                        <h6 class="fw-bold">Nuevo Cliente</h6>
+                        <a asp-controller="Clientes" asp-action="Create" class="btn btn-sm btn-outline-success">Agregar</a>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <div class="stat-number">
+                            <i class="bi bi-cart-plus"></i>
+                        </div>
+                        <h6 class="fw-bold">Nuevo Pedido</h6>
+                        <a asp-controller="Pedidos" asp-action="Create" class="btn btn-sm btn-outline-warning">Crear</a>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <div class="stat-number">
+                            <i class="bi bi-bar-chart"></i>
+                        </div>
+                        <h6 class="fw-bold">Reportes</h6>
+                        <button class="btn btn-sm btn-outline-info">Ver</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="text-center">
+                <h4 class="fw-bold mb-3">¿Necesitas ayuda?</h4>
+                <p class="text-muted mb-4">Consulta nuestra documentación o contacta soporte técnico</p>
+                <div class="d-flex justify-content-center gap-3 flex-wrap">
+                    <button class="btn btn-outline-secondary">
+                        <i class="bi bi-book me-2"></i>Documentación
+                    </button>
+                    <button class="btn btn-outline-secondary">
+                        <i class="bi bi-headset me-2"></i>Soporte
+                    </button>
+                    <button class="btn btn-outline-secondary">
+                        <i class="bi bi-youtube me-2"></i>Tutoriales
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

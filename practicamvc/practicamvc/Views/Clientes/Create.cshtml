@@ -1,0 +1,103 @@
+﻿@model practicamvc.Models.ClienteModel
+@{
+    ViewData["Title"] = "Nuevo cliente";
+}
+
+<style>
+    .form-card {
+        border: none;
+        border-radius: 15px;
+        background: white;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        padding: 2rem;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    .form-title {
+        font-weight: 700;
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+        text-align: center;
+        color: #4a4a4a;
+    }
+
+    .form-label {
+        font-weight: 600;
+        color: #555;
+    }
+
+    .form-control {
+        border-radius: 10px;
+        padding: 10px 15px;
+        border: 1px solid #ddd;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+        .form-control:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 0.2rem rgba(102,126,234,0.25);
+        }
+
+    .btn-gradient {
+        border: none;
+        border-radius: 25px;
+        padding: 10px 25px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        transition: all 0.3s ease;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+    }
+
+        .btn-gradient:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+    .btn-cancel {
+        border-radius: 25px;
+        padding: 10px 25px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+    }
+</style>
+
+<div class="form-card">
+    <h2 class="form-title">Nuevo Cliente</h2>
+    <form asp-action="Create" novalidate id="cliFormCreate">
+        <div asp-validation-summary="ModelOnly" class="text-danger mb-2"></div>
+
+        <div class="mb-3">
+            <label asp-for="Nombre" class="form-label"></label>
+            <input asp-for="Nombre" class="form-control" maxlength="100" required />
+            <span asp-validation-for="Nombre" class="text-danger"></span>
+        </div>
+
+        <div class="row g-3">
+            <div class="col-md-6">
+                <label asp-for="Email" class="form-label"></label>
+                <input asp-for="Email" class="form-control" maxlength="160" required />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="Telefono" class="form-label"></label>
+                <input asp-for="Telefono" class="form-control" maxlength="25" required />
+                <span asp-validation-for="Telefono" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="Direccion" class="form-label"></label>
+            <input asp-for="Direccion" class="form-control" maxlength="200" />
+            <span asp-validation-for="Direccion" class="text-danger"></span>
+        </div>
+
+        <div class="mt-4 d-flex gap-3 justify-content-center">
+            <button type="submit" class="btn-gradient">Guardar</button>
+            <a asp-action="Index" class="btn btn-cancel btn-outline-secondary">Cancelar</a>
+        </div>
+    </form>
+</div>
+}

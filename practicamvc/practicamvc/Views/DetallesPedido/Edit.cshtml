@@ -1,0 +1,97 @@
+﻿@model practicamvc.Models.DetallePedidoModel
+@using Microsoft.AspNetCore.Mvc.Rendering
+@{
+    ViewData["Title"] = "Editar detalle";
+}
+
+<style>
+    .edit-card {
+        border-radius: 15px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        padding: 2rem;
+        background: #fff;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    h2 {
+        font-weight: 700;
+        color: #2c3e50;
+        text-align: center;
+        margin-bottom: 1.5rem;
+    }
+
+    label {
+        font-weight: 600;
+        color: #333;
+    }
+
+    .form-control, .form-select {
+        border-radius: 10px;
+    }
+
+    .btn-primary {
+        border-radius: 25px;
+        padding: 10px 22px;
+        font-weight: 600;
+        text-transform: uppercase;
+        background: linear-gradient(135deg, #3498db, #2c80b4);
+        border: none;
+    }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+        }
+
+    .btn-secondary {
+        border-radius: 25px;
+        padding: 10px 22px;
+        font-weight: 600;
+    }
+</style>
+
+<h2>Editar detalle</h2>
+
+<form asp-action="Edit" novalidate class="edit-card">
+    <input type="hidden" asp-for="Id" />
+    <div asp-validation-summary="ModelOnly" class="text-danger mb-2"></div>
+
+    <div class="row g-3">
+        <div class="col-md-6">
+            <label asp-for="IdPedido" class="form-label"></label>
+            <select asp-for="IdPedido" class="form-select" asp-items="ViewBag.Pedidos"></select>
+            <span class="form-text">“Pedido # — Cliente” para confirmar a quién va dirigido.</span>
+            <span asp-validation-for="IdPedido" class="text-danger"></span>
+        </div>
+        <div class="col-md-6">
+            <label asp-for="IdProducto" class="form-label"></label>
+            <select asp-for="IdProducto" class="form-select" asp-items="ViewBag.Productos"></select>
+            <span asp-validation-for="IdProducto" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="row g-3 mt-1">
+        <div class="col-md-6">
+            <label asp-for="Cantidad" class="form-label"></label>
+            <input asp-for="Cantidad" class="form-control" type="number" min="1" step="1" />
+            <span asp-validation-for="Cantidad" class="text-danger"></span>
+        </div>
+        <div class="col-md-6">
+            <label asp-for="PrecioUnitario" class="form-label"></label>
+            <input asp-for="PrecioUnitario" class="form-control" inputmode="decimal" step="0.01" min="0" />
+            <span asp-validation-for="PrecioUnitario" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="mt-3 d-flex gap-2 justify-content-center">
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

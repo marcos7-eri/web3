@@ -1,0 +1,106 @@
+﻿@model practicamvc.Models.ClienteModel
+@{
+    ViewData["Title"] = "Eliminar cliente";
+}
+
+<style>
+    .page-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 1.5rem;
+    }
+
+    .page-title {
+        font-weight: 700;
+        font-size: 1.6rem;
+        color: #3a3a3a;
+        margin-bottom: 0.75rem;
+    }
+
+    .alert-warning {
+        border-radius: 12px;
+        padding: 1rem 1.25rem;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    }
+
+    .delete-card {
+        border: none;
+        border-radius: 12px;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        overflow: hidden;
+    }
+
+        .delete-card .card-body {
+            padding: 1.25rem 1.5rem;
+        }
+
+    dl.row {
+        margin-bottom: 0;
+    }
+
+    dt.col-sm-3 {
+        font-weight: 600;
+        color: #555;
+    }
+
+    dd.col-sm-9 {
+        color: #333;
+    }
+
+    .actions {
+        display: flex;
+        gap: 0.75rem;
+        margin-top: 1rem;
+    }
+
+    .btn-danger {
+        border-radius: 10px;
+        padding: 10px 18px;
+        font-weight: 700;
+        letter-spacing: 0.3px;
+        box-shadow: 0 6px 18px rgba(255,80,80,0.12);
+    }
+
+    .btn-secondary {
+        border-radius: 10px;
+        padding: 10px 18px;
+        font-weight: 600;
+    }
+
+    {
+        flex-direction: column;
+    }
+
+    }</style>
+
+<div class="page-container">
+    <h2 class="page-title mb-3">Eliminar cliente</h2>
+
+    <div class="alert alert-warning" role="alert">
+        <strong>Atención:</strong> Esta acción no se puede deshacer.
+    </div>
+
+    <div class="card delete-card mb-3">
+        <div class="card-body">
+            <dl class="row mb-0">
+                <dt class="col-sm-3">Nombre</dt>
+                <dd class="col-sm-9">@Model.Nombre</dd>
+
+                <dt class="col-sm-3">Email</dt>
+                <dd class="col-sm-9">@Model.Email</dd>
+
+                <dt class="col-sm-3">Teléfono</dt>
+                <dd class="col-sm-9">@Model.Telefono</dd>
+
+                <dt class="col-sm-3">Dirección</dt>
+                <dd class="col-sm-9">@((string.IsNullOrWhiteSpace(Model.Direccion) ? "—" : Model.Direccion))</dd>
+            </dl>
+        </div>
+    </div>
+
+    <form asp-action="Delete" class="actions">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="btn btn-danger">Eliminar definitivamente</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>

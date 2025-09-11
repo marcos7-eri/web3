@@ -1,0 +1,86 @@
+﻿@model practicamvc.Models.ProductoModel
+@{
+    ViewData["Title"] = "Eliminar producto";
+}
+
+<style>
+    .form-card {
+        border: none;
+        border-radius: 15px;
+        background: white;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        padding: 2rem;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    .form-title {
+        font-weight: 700;
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+        text-align: center;
+        color: #4a4a4a;
+    }
+
+    .btn-gradient {
+        border: none;
+        border-radius: 25px;
+        padding: 10px 25px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        transition: all 0.3s ease;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+    }
+
+        .btn-gradient:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+    .btn-cancel {
+        border-radius: 25px;
+        padding: 10px 25px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+    }
+</style>
+
+<div class="form-card">
+    <h2 class="form-title">Eliminar Producto</h2>
+
+    <div class="alert alert-warning d-flex align-items-center" role="alert">
+        <div>
+            <strong>Atención:</strong> Estás a punto de eliminar este producto. Esta acción no se puede deshacer.
+        </div>
+    </div>
+
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <dl class="row mb-0">
+                <dt class="col-sm-3">Nombre</dt>
+                <dd class="col-sm-9">@Model.Nombre</dd>
+
+                <dt class="col-sm-3">Descripción</dt>
+                <dd class="col-sm-9">@Model.Descripcion</dd>
+
+                <dt class="col-sm-3">Precio (Bs)</dt>
+                <dd class="col-sm-9">@Model.Precio.ToString("N2")</dd>
+
+                <dt class="col-sm-3">Stock</dt>
+                <dd class="col-sm-9">@Model.Stock</dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="d-flex gap-3 justify-content-center">
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="Id" />
+            <button type="submit" class="btn-gradient">
+                <i class="bi bi-trash"></i> Eliminar definitivamente
+            </button>
+        </form>
+        <a asp-action="Index" class="btn btn-cancel btn-outline-secondary">Cancelar</a>
+    </div>
+</div>

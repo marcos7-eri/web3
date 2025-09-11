@@ -1,0 +1,109 @@
+﻿@model practicamvc.Models.PedidoModel
+@{
+    ViewData["Title"] = "Editar pedido";
+}
+
+<style>
+    .form-card {
+        border: none;
+        border-radius: 15px;
+        background: white;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        padding: 2rem;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    .form-title {
+        font-weight: 700;
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+        text-align: center;
+        color: #4a4a4a;
+    }
+
+    .form-label {
+        font-weight: 600;
+        color: #555;
+    }
+
+    .form-control, .form-select {
+        border-radius: 10px;
+        padding: 10px 15px;
+        border: 1px solid #ddd;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+        .form-control:focus, .form-select:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 0.2rem rgba(102,126,234,0.25);
+        }
+
+    .btn-gradient {
+        border: none;
+        border-radius: 25px;
+        padding: 10px 25px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        transition: all 0.3s ease;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+    }
+
+        .btn-gradient:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+    .btn-cancel {
+        border-radius: 25px;
+        padding: 10px 25px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+    }
+</style>
+
+<div class="form-card">
+    <h2 class="form-title">Editar Pedido</h2>
+
+    <form asp-action="Edit" novalidate id="pedidoFormEdit">
+        <input type="hidden" asp-for="Id" />
+        <div asp-validation-summary="ModelOnly" class="text-danger mb-2"></div>
+
+        <div class="row g-3">
+            <div class="col-md-4">
+                <label asp-for="FechaPedido" class="form-label"></label>
+                <input asp-for="FechaPedido" class="form-control" type="date" />
+                <span asp-validation-for="FechaPedido" class="text-danger"></span>
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">Cliente</label>
+                <select asp-for="IdCliente" class="form-select" asp-items="(SelectList)ViewBag.Clientes"></select>
+                <span asp-validation-for="IdCliente" class="text-danger"></span>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="Estado" class="form-label"></label>
+                <select asp-for="Estado" class="form-select" asp-items="(SelectList)ViewBag.Estados"></select>
+                <span asp-validation-for="Estado" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="mt-3 col-md-4">
+            <label asp-for="MontoTotal" class="form-label"></label>
+            <input asp-for="MontoTotal" class="form-control" inputmode="decimal" step="0.01" min="0" />
+            <span asp-validation-for="MontoTotal" class="text-danger"></span>
+        </div>
+
+        <div class="mt-4 d-flex gap-3 justify-content-center">
+            <button type="submit" class="btn-gradient">Guardar</button>
+            <a asp-action="Index" class="btn btn-cancel btn-outline-secondary">Cancelar</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,88 @@
+﻿@model practicamvc.Models.DetallePedidoModel
+@{
+    ViewData["Title"] = "Eliminar detalle";
+}
+
+<style>
+    .delete-card {
+        border-radius: 15px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        padding: 2rem;
+        background: #fff;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    h2 {
+        font-weight: 700;
+        color: #c0392b;
+        text-align: center;
+        margin-bottom: 1.5rem;
+    }
+
+    .alert-warning {
+        border-radius: 10px;
+        font-weight: 500;
+        text-align: center;
+    }
+
+    dt {
+        font-weight: 600;
+        color: #444;
+    }
+
+    dd {
+        color: #555;
+    }
+
+    .btn-danger {
+        border-radius: 25px;
+        padding: 10px 22px;
+        font-weight: 600;
+        text-transform: uppercase;
+        background: linear-gradient(135deg, #e74c3c, #c0392b);
+        border: none;
+    }
+
+        .btn-danger:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+        }
+
+    .btn-secondary {
+        border-radius: 25px;
+        padding: 10px 22px;
+        font-weight: 600;
+    }
+</style>
+
+<h2>Eliminar detalle</h2>
+
+<div class="alert alert-warning" role="alert">
+    <strong>⚠ Atención:</strong> Esta acción no se puede deshacer.
+</div>
+
+<div class="delete-card mb-3">
+    <dl class="row mb-0">
+        <dt class="col-sm-3">Pedido</dt>
+        <dd class="col-sm-9">#@Model.IdPedido — @(Model.Pedido?.Cliente?.Nombre ?? "—")</dd>
+
+        <dt class="col-sm-3">Producto</dt>
+        <dd class="col-sm-9">@Model.Producto?.Nombre</dd>
+
+        <dt class="col-sm-3">Cantidad</dt>
+        <dd class="col-sm-9">@Model.Cantidad</dd>
+
+        <dt class="col-sm-3">Precio unit. (Bs)</dt>
+        <dd class="col-sm-9">@Model.PrecioUnitario.ToString("N2")</dd>
+
+        <dt class="col-sm-3">Subtotal (Bs)</dt>
+        <dd class="col-sm-9">@((Model.Cantidad * Model.PrecioUnitario).ToString("N2"))</dd>
+    </dl>
+</div>
+
+<form asp-action="Delete" class="d-flex gap-2 justify-content-center">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Eliminar definitivamente</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>
